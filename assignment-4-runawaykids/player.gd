@@ -38,3 +38,5 @@ func _process(delta: float) -> void:
 		is_moving = move(Vector2.LEFT)
 	elif Input.is_action_pressed("right"):
 		is_moving = move(Vector2.RIGHT)
+
+#i am here hello
