@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://buhhhufkpmwwu"]
+
+[node name="Instructions" type="CanvasLayer" unique_id=857629053]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="." unique_id=1794474310]
+offset_right = 376.0
+offset_bottom = 72.0
+theme_override_font_sizes/normal_font_size = 32
+text = "Insert instructions here"
+autowrap_mode = 1

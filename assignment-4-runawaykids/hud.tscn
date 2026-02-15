@@ -1,15 +1,115 @@
 [gd_scene format=3 uid="uid://begyitj62lu87"]
 
-[node name="HUD" type="CanvasLayer" unique_id=1514634162]
+[ext_resource type="Script" uid="uid://chr0w748vl7dx" path="res://start_button.gd" id="1_37p78"]
+[ext_resource type="Script" uid="uid://dnejc8hajxabw" path="res://instructions.gd" id="2_64ctp"]
+[ext_resource type="Script" uid="uid://7mtiamk8613x" path="res://close_button.gd" id="3_8sq4i"]
 
-[node name="Label" type="Label" parent="." unique_id=1184020919]
+[node name="CanvasLayer" type="CanvasLayer" unique_id=1739377850]
+
+[node name="ScoreText" type="Label" parent="." unique_id=2004720016]
 anchors_preset = -1
-anchor_left = 0.004
-anchor_top = -0.004
-anchor_right = 0.004
-anchor_bottom = -0.004
-offset_left = -16.0
-offset_right = 800.0
-offset_bottom = 128.0
-text = "Score: "
+anchor_left = 0.063
+anchor_top = 0.042000003
+anchor_right = 0.063
+anchor_bottom = 0.042000003
+offset_left = -111.700005
+offset_top = -36.520004
+offset_right = 129.29999
+offset_bottom = 51.479996
+theme_override_font_sizes/font_size = 64
+text = "Score: 0"
 metadata/_edit_group_ = true
+
+[node name="TurnCount" type="Label" parent="." unique_id=362717711]
+anchors_preset = -1
+anchor_left = 0.94400007
+anchor_top = 0.042000003
+anchor_right = 0.94400007
+anchor_bottom = 0.042000003
+offset_left = -109.6001
+offset_top = -44.520004
+offset_right = 110.3999
+offset_bottom = 43.479996
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 64
+text = "Turn: 0"
+
+[node name="Title" type="Label" parent="." unique_id=1605448594]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -214.5
+offset_right = 214.5
+offset_bottom = 88.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 64
+text = "Runaway Kids"
+
+[node name="StartButton" type="Button" parent="." unique_id=1212670738]
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.95500004
+anchor_right = 0.5
+anchor_bottom = 0.95500004
+offset_left = -79.5
+offset_top = -48.30005
+offset_right = 79.5
+offset_bottom = 47.69995
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Start"
+script = ExtResource("1_37p78")
+
+[node name="InstructionsButton" type="Button" parent="." unique_id=779771133]
+anchors_preset = -1
+anchor_left = 0.90000004
+anchor_top = 0.95500004
+anchor_right = 0.90000004
+anchor_bottom = 0.95500004
+offset_left = 181.99988
+offset_top = 39.69995
+offset_right = 189.99988
+offset_bottom = 47.69995
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Instructions"
+
+[node name="Instructions" type="RichTextLabel" parent="." unique_id=37870969]
+visible = false
+anchors_preset = -1
+anchor_left = 0.034
+anchor_top = 0.5
+anchor_right = 0.034
+anchor_bottom = 0.5
+offset_left = -64.600006
+offset_top = -203.0
+offset_right = 881.4
+offset_bottom = 203.0
+grow_vertical = 2
+theme_override_font_sizes/normal_font_size = 32
+text = "Insert Instructions here"
+script = ExtResource("2_64ctp")
+
+[node name="CloseButton" type="Button" parent="." unique_id=2142057193]
+visible = false
+anchors_preset = -1
+anchor_left = 0.046000004
+anchor_top = 0.95500004
+anchor_right = 0.046000004
+anchor_bottom = 0.95500004
+offset_left = -87.40001
+offset_top = 39.69995
+offset_right = -79.40001
+offset_bottom = 47.69995
+grow_vertical = 0
+theme_override_font_sizes/font_size = 64
+text = "Close"
+script = ExtResource("3_8sq4i")
+
+[connection signal="pressed" from="StartButton" to="StartButton" method="_on_pressed"]
+[connection signal="pressed" from="InstructionsButton" to="Instructions" method="_on_instructions_button_pressed"]
+[connection signal="pressed" from="InstructionsButton" to="CloseButton" method="_on_instructions_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="Instructions" method="_on_close_button_pressed"]
+[connection signal="pressed" from="CloseButton" to="CloseButton" method="_on_pressed"]
