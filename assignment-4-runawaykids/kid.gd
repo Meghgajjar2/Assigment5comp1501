@@ -22,6 +22,10 @@ func _physics_process(delta: float) -> void:
 	# Move the sprite towards the global position at speed of 5
 	sprite_2d.global_position = sprite_2d.global_position.move_toward(global_position, 5)
 
+var last_dir = 0
+var random_dir = 0
+var directions = [Vector2(0, -2), Vector2(0, 2), Vector2(-2, 0), Vector2(2, 0)]
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	
@@ -29,12 +33,19 @@ func _process(delta: float) -> void:
 	if is_moving:
 		return
 	
-	# Use Call move using the up down left right vectors
-	if Input.is_action_pressed("up"):
-		is_moving = move(Vector2.UP)
-	elif Input.is_action_pressed("down"):
-		is_moving = move(Vector2.DOWN)
-	elif Input.is_action_pressed("left"):
-		is_moving = move(Vector2.LEFT)
-	elif Input.is_action_pressed("right"):
-		is_moving = move(Vector2.RIGHT)
+	while true:
+		random_dir = randi_range(0, 3)
+		
+		print("last_dir: " + var_to_str(last_dir))
+		print("random_dir: " + var_to_str(random_dir), directions[random_dir], -directions[random_dir])
+		if random_dir == last_dir:
+			continue
+		elif -directions[random_dir] == directions[last_dir]:
+			continue
+		else:
+			break
+	
+	is_moving = move(directions[random_dir])
+	
+	if is_moving:
+		last_dir = random_dir
