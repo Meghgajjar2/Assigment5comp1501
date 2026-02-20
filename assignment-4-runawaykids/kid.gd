@@ -62,6 +62,7 @@ func _on_player_turn_end() -> void:
 
 func _on_area_2d_area_entered(area: Area2D) -> void:
 	captured.emit()
+	queue_free()
 
 func _on_move_timer_timeout() -> void:
 	move_in_random_direction()
